@@ -1,48 +1,64 @@
 package com.example.webchatserver;
 
-import java.io.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-import org.apache.commons.lang3.RandomStringUtils;
-
-/**
- * This is a class that has services
- * In our case, we are using this to generate unique room IDs**/
 @WebServlet(name = "chatServlet", value = "/chat-servlet")
 public class ChatServlet extends HttpServlet {
-    private String message;
 
-    //static so this set is unique
-    public static Set<String> rooms = new HashSet<>();
-
-
+    private static final Set<String> rooms = new HashSet<>();
 
     /**
      * Method generates unique room codes
      * **/
-    public String generatingRandomUpperAlphanumericString(int length) {
+    // Generate a unique room code
+    private String generatingRandomUpperAlphanumericString(int length) {
         String generatedString = RandomStringUtils.randomAlphanumeric(length).toUpperCase();
-        // generating unique room code
-        while (rooms.contains(generatedString)){
+        while (rooms.contains(generatedString)) {
             generatedString = RandomStringUtils.randomAlphanumeric(length).toUpperCase();
         }
-        rooms.add(generatedString);
-
         return generatedString;
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/plain");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
 
-        // send the random code as the response's content
-        PrintWriter out = response.getWriter();
-        out.println(generatingRandomUpperAlphanumericString(5));
+        String action = request.getParameter("action");
 
+        if ("new".equals(action)) {
+            // Generate a new room code
+            String roomCode = generatingRandomUpperAlphanumericString(5);
+            rooms.add(roomCode);
+
+            JSONArray jsRooms = new JSONArray();
+            jsRooms.put(roomCode);
+
+            PrintWriter out = response.getWriter();
+            out.println("{\"rooms\": " + jsRooms + "}");
+        } else {
+            // Return existing room codes
+            JSONArray jsRooms = new JSONArray();
+            for (String room : rooms) {
+                jsRooms.put(room);
+            }
+
+            PrintWriter out = response.getWriter();
+            out.println("{\"rooms\": " + jsRooms + "}");
+        }
     }
-
     public void destroy() {
     }
 }
