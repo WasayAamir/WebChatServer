@@ -1,9 +1,6 @@
-// Define a WebSocket variable
 let ws;
 
-// Function to create a new chat room
 function newRoom() {
-    // Fetch request to create a new room
     fetch("http://localhost:8080/WSChatServer-1.0-SNAPSHOT/chat-servlet?action=new")
         .then(response => {
             if (!response.ok) {
@@ -12,11 +9,10 @@ function newRoom() {
             return response.json();
         })
         .then(data => {
-            // Extract the room code from the response data
-            let roomCode = data.rooms[0];
-            console.log('New room created with code:', roomCode);
+            let roomCode = data.rooms[0]; // Extract the room code from the response data
+            console.log('New room created with code:', roomCode); // Log the room code
 
-            // Display the room code beside the button
+            // Append the new room code beside the button
             let roomCodeContainer = document.getElementById('room-code');
             roomCodeContainer.textContent = "Room Code: " + roomCode;
 
@@ -28,32 +24,37 @@ function newRoom() {
         });
 }
 
-// Function to enter a chat room
+
+// Register the event listener for sending messages
+document.getElementById("input").addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+        let request = {"type":"chat", "msg":event.target.value};
+        ws.send(JSON.stringify(request));
+        event.target.value = "";
+    }
+});
+
 function enterRoom(code) {
-    // Create a WebSocket connection to the chat room
     ws = new WebSocket("ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/" + code);
 
-    // Event handler for incoming messages
     ws.onmessage = function (event) {
         console.log(event.data);
         let message = JSON.parse(event.data);
 
-        // Display the incoming message in the chat log
-        document.getElementById("log").value += "[" + timestamp() + "] " + message.message + "\n";
-    }
-
-    // Event listener for sending messages on Enter key press
-    document.getElementById("input").addEventListener("keyup", function (event) {
-        if (event.key === "Enter") {
-            // Send the message when Enter key is pressed
-            sendMessage();
+        if (message.type === "chat") {
+            document.getElementById("log").value += "[" + timestamp() + "] " + message.message + "\n";
+        } else if (message.type === "image") {
+            let imageData = message.imageData;
+            let imgElement = document.createElement('img');
+            imgElement.src = imageData;
+            document.getElementById("log").appendChild(imgElement);
+            document.getElementById("log").appendChild(document.createElement('br'));
         }
-    });
+    }
 }
 
-// Function to refresh the list of active chat rooms
+
 function refreshRooms() {
-    // Fetch request to get the list of rooms
     fetch("http://localhost:8080/WSChatServer-1.0-SNAPSHOT/chat-servlet")
         .then(response => {
             if (!response.ok) {
@@ -62,24 +63,23 @@ function refreshRooms() {
             return response.json();
         })
         .then(data => {
-            // Extract the list of rooms from the response data
-            let roomList = data.rooms;
-            console.log("Received room list:", roomList);
-
-            // Display the list of rooms
-            displayRooms(roomList);
+            let roomList = data.rooms; // Extract the list of rooms from the response data
+            console.log("Received room list:", roomList); // Log the received room list
+            displayRooms(roomList); // Display the list of rooms
         })
         .catch(error => {
             console.error('Error refreshing rooms:', error);
         });
 }
 
-// Function to join a specific chat room
 function joinRoom() {
+    // Function to join a room
     let roomCodeInput = document.getElementById('join-room-code');
     let roomCode = roomCodeInput.value.trim();
     if (roomCode !== '') {
+        // Enter the room with the given code
         enterRoom(roomCode);
+        // Clear input field
         roomCodeInput.value = '';
     }
 }
@@ -112,38 +112,40 @@ function closeNav() {
 function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
 }
-
-// Function to display the list of chat rooms
 function displayRooms(rooms) {
     let roomListContainer = document.getElementById('chat-room-list');
     roomListContainer.innerHTML = ''; // Clear previous room list
 
     if (rooms.length === 0) {
+        // If there are no rooms, display a message or leave the list blank
         roomListContainer.innerHTML = '<li>No active rooms</li>';
     } else {
         rooms.forEach(room => {
             let roomListItem = document.createElement('li');
             let roomLink = document.createElement('a');
-            roomLink.href = "#";
+            roomLink.href = "#"; // You can set the href attribute to the actual chat room URL
             roomLink.textContent = room;
+
+            // Add event listener to the room link
             roomLink.addEventListener('click', function(event) {
-                event.preventDefault();
-                enterRoom(room);
+                event.preventDefault(); // Prevent the default link behavior
+                enterRoom(room); // Call the function to enter the chat room when the link is clicked
                 document.getElementById("room-code").textContent = "Room Code: " + room;
             });
+
             roomListItem.appendChild(roomLink);
             roomListContainer.appendChild(roomListItem);
         });
     }
 }
 
-// Function to send a message
+
 function sendMessage() {
     let inputElement = document.getElementById("input");
     let message = inputElement.value.trim();
     if (message !== '') {
         let request = {"type":"chat", "msg": message};
         ws.send(JSON.stringify(request));
-        inputElement.value = "";
+        inputElement.value = ""; // Clear the input field after sending the message
     }
 }
