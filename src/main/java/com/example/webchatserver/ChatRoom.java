@@ -1,62 +1,53 @@
 package com.example.webchatserver;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import jakarta.websocket.Session;
+import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * This class represents the data you may need to store about a Chat room
- * You may add more method or attributes as needed
- * **/
 public class ChatRoom {
-    private String  code;
+    private String roomId;
+    private Map<String, String> users = new ConcurrentHashMap<>();
+    private Map<String, Session> sessions = new ConcurrentHashMap<>();
 
-    //each user has an unique ID associate to their ws session and their username
-    private Map<String, String> users = new HashMap<String, String>() ;
-
-    // when created the chat room has at least one user
-    public ChatRoom(String code, String user){
-        this.code = code;
-        // when created the user has not entered their username yet
-        this.users.put(user, "");
-    }
-    public void setCode(String code) {
-        this.code = code;
+    public ChatRoom(String roomId) {
+        this.roomId = roomId;
     }
 
-    public String getCode() {
-        return code;
+    public String getRoomId() {
+        return roomId;
     }
 
-    public Map<String, String> getUsers() {
-        return users;
+    public void addSession(Session session) {
+        users.put(session.getId(), "");
+        sessions.put(session.getId(), session);
     }
 
-    /**
-     * This method will add the new userID to the room if not exists, or it will add a new userID,name pair
-     * **/
-    public void setUserName(String userID, String name) {
-        // update the name
-        if(users.containsKey(userID)){
-            users.remove(userID);
-            users.put(userID, name);
-        }else{ // add new user
-            users.put(userID, name);
+    public void removeUser(String sessionId) {
+        String username = users.get(sessionId);
+        users.remove(sessionId);
+        sessions.remove(sessionId);
+    }
+
+    public boolean isEmpty() {
+        return users.isEmpty();
+    }
+
+    public boolean containsUser(String sessionId) {
+        return users.containsKey(sessionId);
+    }
+
+    public void setUsername(String sessionId, String username) {
+        users.put(sessionId, username);
+    }
+
+    public String getUsername(String sessionId) {
+        return users.get(sessionId);
+    }
+
+    public void broadcast(String message) throws IOException {
+        for (Session session : sessions.values()) {
+            session.getBasicRemote().sendText(message);
         }
-    }
-
-    /**
-     * This method will remove a user from this room
-     * **/
-    public void removeUser(String userID){
-        if(users.containsKey(userID)){
-            users.remove(userID);
-        }
-
-    }
-
-    public boolean inRoom(String userID){
-        return users.containsKey(userID);
     }
 }
