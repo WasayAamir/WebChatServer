@@ -1,38 +1,63 @@
-# Assignment 02 - Web Chat Server (Instructions)
-> Course: CSCI 2020U: Software Systems Development and Integration
+# Project Information
 
-This is the template for your Assignment 02.
+This project is a web chat server implemented using a Java Web Application. It utilizes WebSockets along with HTML, JavaScript, and CSS to create a multi-room chat environment. Users can join different chat rooms and communicate with others in the same room. The application is designed to showcase real-time messaging functionality with multiple clients. Below is a short video demonstrating the application in action:
 
-## Overview
-You want to create a web chat server with multiple rooms. This will allow you and your friends to chat privately.
+[![Chat Server Demo](link_to_your_video)]
 
-- Check the `Canvas/Assingments/Assignment 02` for more the detailed instructions.
+**Group Members:**
+- Wasay Aamir  
+- Aakash Harendaran 
+- Rahil Haque
 
-### WebChatServer - Endpoints
+## Improvements
 
-**Connect to the websocket**
+In this project, several improvements were made to enhance the interface and interaction functionalities. Some of the key improvements include:
 
-From the `ChatServer` class. This will create a new client connect to the web server. The server and client communicate using `json` messages.
-- `ws://localhost:8080/WSChatServer-1.0-SNAPSHOT/ws/{roomID}`
+- Enhanced user interface design for better user experience.
+- Added features such as real-time notifications for new messages.
+- Implemented improved room management functionalities.
 
+## How to Run
 
-**GET a new (unique) room code**
+To run the application locally, follow these steps:
 
-From the `ChatServlet` class. This will return a `text/plain` content type.
-- `http://localhost:8080/WSChatServer-1.0-SNAPSHOT/chat-servlet`
-See a sample of the response data:
-```
-1B9FN
-```
+1. Clone the repository to your local machine:
 
-### WebChatServer - client
+```bash
+git clone [repository_url]
 
-Your client is in the `webapp` folder, when started the application will run at `http://localhost:8080/WSChatServer-1.0-SNAPSHOT/`; which will load the `index.html` file.
+2. Navigate to the project directory:
+    cd [project_directory]
 
-Your client-side code will be in the `js/main.js` javascript file.
+3. Build the project using Maven:
+    mvn clean install
 
-> Obs. Feel free to create other helper classes as you see fit.
-> 
+4. Deploy the generated WAR file to your preferred Java application server (e.g., Apache Tomcat).
+
+5. Access the application through your web browser:
+      http://localhost:8080/chat-server
+      
+6. Replace `[repository_url]` and `[project_directory]` with the appropriate values for your project. After replacing the placeholders, users can follow these steps to clone, build, deploy, and run the application locally.
+
+## References
+
+The following libraries and materials were used in the development of this project:
+
+- [Library/Framework 1]: Description or link (if applicable)
+- [Library/Framework 2]: Description or link (if applicable)
+- [Any other resources used]
+
+## Contribution Report
+
+The contribution report indicates the percentage of total contribution for each member of the group. In the absence of specific group issues, equal percentages will be assigned to all group members.
+
+| Member         | Contribution (%) |
+|----------------|------------------|
+| Wasay Aamir    | 33.3%            |
+| Aakash Harendaran| 33.3%          |
+| Rahil Haque    | 33.3%            |
+
+**Note:** In case of any communication problems within the group, please reach out to the instructor within the first 3 days of assignment release to address the issues. Failure to do so may result in no accommodations being provided due to group communication issues.
 
 
 
