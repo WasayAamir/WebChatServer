@@ -1,0 +1,594 @@
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    /* 1 */
+}
+
+/*
+ * Extends the .sr-only class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.sr-only.focusable:active,
+.sr-only.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: inherit;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *::before,
+    *::after {
+        background: #000000 !important;
+        color: #000 !important;
+        /* Black prints faster */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+        content: "";
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+/* CSS for the top bar */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f30202;
+    color: #E3E2DF;
+    padding: 10px;
+    text-align: center;
+    z-index: 2;
+}
+
+/* CSS for the sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f10707;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+/* The sidebar links */
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.1s;
+}
+
+/* Added style for the closed sidebar */
+.sidebar:not(.open) {
+    transform: translateY(100px);
+    background-color: #ef0202;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+    color: #e10909;
+}
+
+/* Style page content */
+
+/* Style for the content */
+.content {
+    padding-bottom: 60px;
+    max-width: 600px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center-align content */
+}
+
+
+/* CSS for the bottom bar */
+.bottom-bar {
+    position: fixed;
+    width: 100%;
+    background-color: #f60707;
+    color: #E3E2DF;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    z-index: 2;
+}
+
+/* CSS to push the footer to the bottom of the page */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    padding-bottom: 60px;
+}
+
+/* CSS for the sidebar toggle button */
+.sidebar-toggle {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #f10707;
+    color: #E3E2DF;
+    padding: 30px 20px;
+    border: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3; /* Ensure it's above other elements */
+}
+
+.sidebar-toggle:hover {
+    background-color: #303030;
+}
+#main {
+    transition: margin-left .5s;
+    padding: 150px;
+}
+
+/* CSS for the content */
+.content {
+    padding-bottom: 60px;
+    max-width: 600px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center-align content */
+    position: relative; /* Ensure precisionAccuracy div is positioned relative to the main content */
+}
+
+/* Style for the table container */
+.table-container {
+    max-height: 900px; /* Set the maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* CSS for the About page background image */
+.about-background {
+    background-image: url('how-to-create-cool-website-backgrounds-the-ultimate-guide.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+}
+
+.index-background{
+    background-image: url('how-to-create-cool-website-backgrounds-the-ultimate-guide.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+}
+
+/* CSS for the main content in Dashboard page */
+.dashboard-heading {
+    color: #E3E2DF; /* Replace with your desired color code or name */
+}
+
+/* Additional styling for the dashboard heading, if needed */
+.dashboard-heading {
+    font-size: 36px;
+    font-weight: bold;
+    /* Add any other styling properties as needed */
+}
+
+/* CSS for the main content in About page */
+.about-content {
+    text-align: center;
+}
+
+.about-content .section-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.about-content .person-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.about-content .name {
+    font-size: 24px;
+    font-family: 'YourDesiredFont', sans-serif; /* Replace 'YourDesiredFont' with the desired font-family */
+    margin-bottom: 5px;
+    -webkit-text-stroke: .5px white; /* White outline */
+    padding: 5px; /* Add padding for better appearance */
+}
+
+.about-content .github-link img {
+    width: 20px; /* Adjust the width of the GitHub logo as needed */
+    height: auto;
+}
+
+/* Optional: Add styles for the GitHub logo hover effect */
+.about-content .github-link:hover img {
+    filter: brightness(120%); /* Adjust brightness on hover */
+}
+/* CSS for the team members on the About page */
+.about-background .content .section-title {
+    -webkit-text-stroke: 0.5px #ffffff; /* WebKit browsers (Safari, Chrome) */
+    font-size: 30px;
+    color: transparent; /* Make the text transparent to show only the stroke */
+}
+
+.about-background .content .person-info {
+    display: inline-block;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.about-background .content .person-info .github-logo {
+    width: 150px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.about-background .content .person-info h2 {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.about-background .content .person-info .github-link {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+}
+
+.about-background .content .person-info .github-link img {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+/* CSS for centering main content */
+body {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Set height to viewport height */
+}
+
+.content-container {
+    text-align: center;
+    width: 100%; /* Adjust width as needed */
+    max-width: 600px; /* Set maximum width */
+    position: relative; /* Make the container relative for absolute positioning */
+}
+.input-file-container {
+    display: flex;
+    align-items: center;
+}
+
+#button-container {
+    margin-bottom: 20px; /* Add space between button container and join container */
+}
+
+#log-container {
+    margin-bottom: 0px;
+    height: 400px; /* Set the desired fixed height */
+    width: 600px; /* Set the desired fixed width */
+    overflow-y: auto; /* Enable vertical scrollbar */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: flex-start; /* Align items to the start (top) of the container */
+}
+
+#log {
+    flex: 1; /* Take up remaining space */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    resize: none;
+}
+
+#input-container {
+    width: 100%; /* Take full width of the container */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+}
+
+#input {
+    flex: 1; /* Let the input take remaining space */
+}
+
+#button-container,
+#join-container {
+    position: absolute; /* Position the button container absolutely */
+    top: -25px; /* Align to the top of the container */
+}
+
+#button-container {
+    left: 0; /* Align to the left of the container */
+}
+
+#join-container {
+    right: 0; /* Align to the right of the container */
+}
+#room-code {
+    color: #ffffff; /* Change the color */
+}
+#new-room-btn {
+    background-color: dodgerblue; /* Green background color */
+}
+/* Hover effect */
+#new-room-btn:hover {
+    opacity: 0.7; /* Full opacity on hover */
+}
+#join-room-btn{
+    background-color: dodgerblue; /* Green background color */
+}
+#join-room-btn:hover{
+    opacity: 0.7; /* Full opacity on hover */
+}
+#send-button{
+    background-color: dodgerblue; /* Green background color */
+}
+#send-button:hover{
+    opacity: 0.7;
+}
+/* Dropdown button */
+.dropbtn {
+    color: #000fff;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+}
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(243, 5, 5, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #e70404;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Position the dropdown menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#file-input {
+    display: none; /* Hide the file input by default */
+}

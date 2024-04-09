@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Chat Server - About</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
 </head>
-<body>
 
+<body class="about-background">
+<!-- Top bar with Sidebar Toggle -->
+<div class="top-bar">
+    <span class="sidebar-toggle" onclick="toggleNav()">&#9776;</span>
+    <h1>Chat Server</h1>
+</div>
+
+<!-- Sidebar -->
+<div id="mySidebar" class="sidebar">
+    <a href="index.html">Dashboard</a>
+    <a href="about.html">About</a>
+    <!-- Add other sidebar links as needed -->
+</div>
+
+<!-- Main content -->
+<div id="main" class="content about-content">
+    <h1 class="section-title">This website is brought to you by:</h1>
+    <div class="person-info">
+        <img src="css/IMG_3048.jpg" alt="Wasay Pic" class="github-logo">
+        <h2 class="name">Wasay Aamir</h2>
+        <a href="https://github.com/WasayAamir" target="_blank" class="github-link">GitHub <img src="css/github.png" alt="GitHub Logo"></a>
+    </div>
+    <div class="person-info">
+        <img src="css/44A5E322-E43A-4FF2-9EC4-E7A068330411.jpg" alt="Aaksah Pic" class="github-logo">
+        <h2 class="name">Aakash Harendaran</h2>
+        <a href="https://github.com/Aakash-Harendran" target="_blank" class="github-link">GitHub <img src="css/github.png" alt="GitHub Logo"></a>
+    </div>
+    <div class="person-info">
+        <img src="css/rahil_pic.jpg" alt="Rahil Pic" class="github-logo">
+        <h2 class="name">Rahil Haque</h2>
+        <a href="https://github.com/Rahil2804" target="_blank" class="github-link">GitHub <img src="css/github.png" alt="GitHub Logo"></a>
+    </div>
+</div>
+
+
+
+<!-- Bottom bar -->
+<div class="bottom-bar">
+    <p>Copyright &copy; CSCI 2020U - Winter 2024</p>
+</div>
+
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
 </body>
+
 </html>

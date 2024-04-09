@@ -1,48 +1,67 @@
-<!doctype html>
-<html class="no-js" lang="">
-
+<!DOCTYPE html>
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
   <title>Chat Server</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
-
   <meta name="theme-color" content="#fafafa">
+
+  <!-- Add your custom CSS here -->
+  <style>
+    /* Your custom CSS code goes here */
+    #active-chat-rooms {
+      color: #f8f6f6; /* Change to your desired color */
+    }
+  </style>
 </head>
+<body class="index-background">
 
-<body>
+<!-- Your existing HTML content continues here -->
+<div class="top-bar">
+  <span class="sidebar-toggle" onclick="toggleNav()">&#9776;</span>
+  <h1>Chat Server</h1>
+</div>
 
-<!-- Add your site or application content here -->
+<div id="mySidebar" class="sidebar">
+  <a href="index.html">Dashboard</a>
+  <a href="about.html">About</a>
+  <h2 id="active-chat-rooms">Active Chat Rooms</h2> <!-- Added ID for styling -->
+  <ul id="chat-room-list"></ul>
+  <button id="refresh-button" onclick="refreshRooms()">Refresh</button>
+</div>
 
+<div class="content-container">
+  <div id="button-container">
+    <button id="new-room-btn" onclick="newRoom()">New Room</button>
+    <span id="room-code">Room Code: </span>
+  </div>
+  <div id="join-container">
+    <input id="join-room-code" type="text" placeholder="Enter Room Code">
+    <button id="join-room-btn" onclick="joinRoom()">Join Room</button>
+  </div>
+  <div id="log-container">
+    <textarea title="Chat Log" id="log" readonly></textarea>
+  </div>
+  <div id="input-container" class="input-file-container">
+    <input id="input" type="text" placeholder="Type your message and press Enter"/>
+    <button id="send-button" onclick="sendMessage()">Send</button>
+  </div>
+</div>
 
-
-
-
+<div class="bottom-bar">
+  <p>Copyright &copy; CSCI 2020U - Winter 2024</p>
+</div>
 
 <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
-
-<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>
   window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
   ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
 </script>
 <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
-
 </html>
-
-
