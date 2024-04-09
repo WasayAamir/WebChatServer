@@ -12,9 +12,11 @@ This project is a web chat server implemented using a Java Web Application. It u
 
 In this project, several improvements were made to enhance the interface and interaction functionalities. Some of the key improvements include:
 
-- Enhanced user interface design for better user experience.
-- Added features such as real-time notifications for new messages.
-- Implemented improved room management functionalities.
+- Added a send button and refresh button for the chat server.
+- Implemented a new room button that displays the current room.
+- Enabled users to join rooms using a "Join Room" button ad links on the room codes that connect you to them.
+- Improved user-friendly UI and made it visually appealing.
+
 
 ## 🏃‍♂️ How to Run
 
