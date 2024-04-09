@@ -52,7 +52,7 @@ To run the application locally, follow these steps:
 
 ## 🤝 Contribution Report
 
-The contribution report indicates the percentage of total contribution for each member of the group. In the absence of specific group issues, equal percentages will be assigned to all group members.
+The contribution report indicates the percentage of total contribution for each member of the group.
 
 | Member            | Contribution (%) |
 |-------------------|------------------|
