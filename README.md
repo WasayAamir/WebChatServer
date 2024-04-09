@@ -63,7 +63,9 @@ The contribution report indicates the percentage of total contribution for each 
 
 ## 📚 References
 
-The following libraries and materials were used in the development of this project:
+The following libraries, tutorials, and materials were used in the development of this project:
 
 - [HTML5 WebSocket Tutorial on Tutorialspoint](https://www.tutorialspoint.com/html5/html5_websocket.htm)
 - [HTML Tags Reference on W3Schools](https://www.w3schools.com/tags/default.asp)
+- [Java WebSocket Server in IntelliJ IDEA](https://jckjaer.dk/2017/06/07/java-websocket-server-in-intellij-idea/)
+
