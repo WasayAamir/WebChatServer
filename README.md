@@ -3,6 +3,9 @@
 This project is a web chat server implemented using a Java Web Application. It utilizes WebSockets along with HTML, JavaScript, and CSS to create a multi-room chat environment. Users can join different chat rooms and communicate with others in the same room. The application is designed to showcase real-time messaging functionality with multiple clients. There is a short video in the repository that shows the application in action.
 
 
+https://github.com/user-attachments/assets/f75cdaf3-dca3-43d6-afeb-512d52e707dd
+
+
 **Group Members:**
 - 🧑‍💻 Wasay Aamir  
 - 🧑‍💻 Aakash Harendran 
